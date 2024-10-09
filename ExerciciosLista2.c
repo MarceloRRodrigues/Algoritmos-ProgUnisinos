@@ -137,7 +137,7 @@ que você calcule quanto cada cliente gastou na loja apenas informando o número
 camisetas, calças e cintos comprados. As camisetas custam R$ 25,00, as calças cem reais e os
 cintos 40 reais. Some o valor da compra e ao final dê um desconto de 10 por cento sobre o
 total. Exiba na tela o valor do desconto e o valor da compra.
-
+*/
 #include <stdio.h>
 int main()
 {
@@ -158,4 +158,4 @@ int main()
 
     return 0;
 }
-*/
+

@@ -341,7 +341,7 @@ as regras da Unisinos. Imprima a média final na tela e diga se o aluno passou p
 em recuperação (grau C). Se o aluno ficou em recuperação, pergunte se ele quer substituir o Grau
 A ou o Grau B (ele deve digitar ‘a’ ou ‘b’). Leia a nota do Grau C, recalcule a média de acordo com o
 grau substituído e imprima na tela o resultado, informando se ele foi aprovado ou reprovado.
-*/
+
 #include <stdio.h>
 int main()
 {
@@ -379,4 +379,99 @@ int main()
 
     return 0;
 }
+Exercício 14 - Criar um programa para identificar o valor a ser pago por um plano de saúde dada a idade do
+conveniado considerando que todos pagam R$ 300 e mais um adicional (se tiver dependentes)
+conforme a seguinte tabela:
+a) crianças com menos de 10 anos pagam R$100;
+b) dependentes com idade entre 10 e 30 anos pagam R$220;
+c) dependentes com idade entre 31 e 60 anos pagam R$ 395; e
+d) dependentes com mais de 60 anos pagam R$ 480.
 
+#include <stdio.h>
+int main()
+{
+    int valor_plano = 300, idade, resposta, dependentes=0, resposta2, resposta3 = 2;
+    printf("---Plano de saude---\n\n");
+    printf("Existem dependentes no plano de saude? Responda com numeros:\n1 - Nao.\n2 - Sim.\n");
+    printf("Resposta: ");
+    scanf("%d",&resposta);
+
+    if(resposta == 1) resposta3 = 2;
+    else if(resposta == 2)
+    {
+        dependentes++;
+        while(dependentes==1)
+        {
+            printf("\nQual eh a idade do dependente?: ");
+            scanf("%d",&idade);
+            if(idade<10) valor_plano = valor_plano + 100;
+            else if(idade>=10 && idade<=30) valor_plano = valor_plano + 220;
+            else if(idade>=31 && idade<=60) valor_plano = valor_plano + 395;
+            else if(idade>60) valor_plano = valor_plano + 480;
+            else
+            {
+                printf("\nDados invalidos. Insira uma idade valida");
+                return 0;
+            } 
+            while(resposta3 == 2)
+            {
+                printf("\nDeseja adicionar mais dependentes? Responda com numeros:\n1 - Nao.\n2 - Sim.\n");
+                printf("Resposta: ");
+                scanf("%d",&resposta2);
+                if(resposta2 == 1)
+                {
+                    dependentes = 2;
+                    break;
+                }
+                else if(resposta2 == 2) break;
+                else printf("\nResposta invalida. Insira uma opcao valida");
+            }
+        }
+    }
+    else
+    {
+        printf("\nResposta invalida. Insira uma opcao valida");
+        return 0;
+    }
+    printf("\nO valor total a ser pago no plano de saude eh: R$%d", valor_plano);
+
+    return 0;
+}
+Exercício 15 - Elabore um algoritmo que calcule o que deve ser pago por um produto, considerando o preço
+normal de etiqueta e a escolha da condição de pagamento. Utilize os códigos da tabela a seguir
+para ler qual a condição de pagamento escolhida e efetuar o cálculo adequado.
+1 - À vista em dinheiro, recebe 15% de desconto
+2 - À vista no cartão de crédito, recebe 10% de desconto
+3 - Em duas vezes, preço normal de etiqueta sem juros
+4 - Em três vezes, preço normal de etiqueta mais juros de 10%
+
+#include <stdio.h>
+int main()
+{
+    float etiqueta, preco_final;
+    int resposta, aux_condicao = 1;
+
+    printf("Insira o preco de etiqueta do produto: ");
+    scanf("%f",&etiqueta);
+    while(aux_condicao==1)
+    {
+        printf("Qual sera a condicao de pagamento entre as seguintes? (Responda com numeros)\n");
+        printf("1 - A vista em dinheiro, recebe 15%% de desconto\n2 - A vista no cartão de crédito, recebe 10%% de desconto\n3 - Em duas vezes, preço normal de etiqueta sem juros\n4 - Em tres vezes, preço normal de etiqueta mais juros de 10%%\n");
+        printf("Resposta: ");
+        fflush(stdin);
+        scanf("%d",&resposta);
+        if(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4)
+        {
+            printf("condicao invalida. Insira um valor valido.\n");
+        }
+        else aux_condicao = 2;
+    }
+    if(resposta == 1) preco_final = etiqueta - (0.15*etiqueta);
+    else if(resposta == 2) preco_final = etiqueta - (0.1*etiqueta);
+    else if(resposta == 3) preco_final = etiqueta;
+    else if(resposta == 4) preco_final = etiqueta + (0.1*etiqueta);
+
+    printf("\nO preco total a pagar eh: R$%.2f",preco_final);
+    return 0;
+}
+*/
